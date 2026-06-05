@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SELF PHOTO STUDIO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#e3c29d;
+color:#4b3425;
+overflow-x:hidden;
+position:relative;
+}
+
+/* ORNAMEN */
+
+.daun{
+position:fixed;
+z-index:0;
+pointer-events:none;
+opacity:.08;
+}
+
+.daun-kiri-atas{
+top:0;
+left:0;
+width:130px;
+}
+
+.daun-kanan-atas{
+top:0;
+right:0;
+width:130px;
+}
+
+.daun-kiri-bawah{
+bottom:0;
+left:0;
+width:180px;
+}
+
+.daun-kanan-bawah{
+bottom:0;
+right:0;
+width:180px;
+}
+
+/* WRAPPER */
+
+.wrapper{
+position:relative;
+z-index:2;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* LOGO */
+
+.logo{
+display:flex;
+justify-content:center;
+margin-top:-15px;
+margin-bottom:40px;
+}
+
+.logo img{
+width:600px;
+max-width:100%;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:34px;
+font-weight:800;
+line-height:1.2;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:15px;
+opacity:.85;
+}
+
+/* BANNER */
+
+.banner{
+margin-bottom:30px;
+}
+
+.banner img{
+width:100%;
+border-radius:24px;
+display:block;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+/* CARD */
+
+.card{
+background:white;
+border-radius:24px;
+padding:22px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+margin-bottom:20px;
+}
+
+/* SECTION */
+
+.section{
+margin-bottom:40px;
+}
+
+.section-title{
+font-size:28px;
+font-weight:700;
+text-align:center;
+margin-bottom:20px;
+}
+
+/* ABOUT */
+
+.about{
+text-align:center;
+line-height:1.8;
+font-size:15px;
+}
+
+/* PACKAGE */
+
+.package-card{
+background:white;
+border-radius:24px;
+padding:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+margin-bottom:18px;
+}
+
+.package-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:12px;
+}
+
+.package-name{
+font-size:22px;
+font-weight:700;
+}
+
+.package-price-container{
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+}
+
+.package-price-old{
+font-size:14px;
+color:#999;
+text-decoration:line-through;
+text-decoration-color:#ff4d4d; /* Coretan warna merah */
+font-weight:500;
+}
+
+.package-price{
+font-size:20px;
+font-weight:700;
+color:#f7941d;
+white-space:nowrap;
+}
+
+.badge{
+display:inline-block;
+background:#ff6b35;
+color:white;
+padding:5px 12px;
+border-radius:30px;
+font-size:12px;
+font-weight:600;
+margin-bottom:12px;
+}
+
+.package-card ul{
+padding-left:18px;
+margin-top:10px;
+}
+
+.package-card li{
+margin-bottom:7px;
+font-size:14px;
+}
+
+.package-select{
+margin-top:15px;
+}
+
+.package-select input{
+transform:scale(1.2);
+margin-right:8px;
+}
+
+/* OPTION BOX */
+
+.option-box{
+background:white;
+border-radius:24px;
+padding:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.option-box h3{
+margin-bottom:12px;
+font-size:18px;
+}
+
+.option-box select{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #ddd;
+margin-bottom:18px;
+font-size:14px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.gallery img{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:18px;
+transition:.3s;
+cursor:pointer;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+/* FAQ */
+
+.faq-item{
+background:white;
+padding:18px;
+border-radius:18px;
+margin-bottom:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.faq-item h4{
+margin-bottom:8px;
+}
+
+/* SPACER */
+
+.spacer{
+height:120px;
+}
+
+/* STICKY BAR */
+
+.sticky-total{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+padding:15px;
+box-shadow:0 -5px 20px rgba(0,0,0,.1);
+z-index:999;
+}
+
+.sticky-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.total-label{
+font-size:12px;
+}
+
+.total-price{
+font-size:24px;
+font-weight:700;
+color:#f7941d;
+}
+
+.book-btn{
+background:#25D366;
+border:none;
+color:white;
+padding:14px 22px;
+border-radius:14px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:28px;
+}
+
+.section-title{
+font-size:24px;
+}
+
+.package-name{
+font-size:18px;
+}
+
+.package-price-old{
+font-size:12px;
+}
+
+.package-price{
+font-size:16px;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.book-btn{
+padding:12px 18px;
+font-size:14px;
+}
+
+.total-price{
+font-size:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="./daun-kiri-atas.png" class="daun daun-kiri-atas">
+<img src="./daun-kanan-atas.png" class="daun daun-kanan-atas">
+<img src="./daun-kiri-bawah.png" class="daun daun-kiri-bawah">
+<img src="./daun-kanan-bawah.png" class="daun daun-kanan-bawah">
+
+<div class="wrapper">
+
+<div class="logo">
+<img src="./logo.png" alt="MasMotret">
+</div>
+
+<div class="hero">
+<h1>SELF PHOTO STUDIO</h1>
+<p>
+Abadikan momen terbaik bersama pasangan,
+keluarga, sahabat, maupun diri sendiri.
+</p>
+</div>
+
+
+<section class="section">
+
+
+</section>
+<section class="section">
+
+<h2 class="section-title">Pilih Paket</h2>
+
+<div class="package-card">
+
+
+<div class="package-header">
+<div class="package-name">BESTIE</div>
+<div class="package-price-container">
+<span class="package-price-old">Rp 35.000</span>
+<div class="package-price">Rp 30.000</div>
+</div>
+</div>
+
+<ul>
+<li>1 - 2 Orang</li>
+<li>Durasi 10 Menit</li>
+<li>Free Editing</li>
+<li>Semua File via Google Drive</li>
+<li>Free Kupon</li>
+</ul>
+
+<div class="package-select">
+<label>
+<input
+type="radio"
+name="paket"
+value="30000"
+data-paket="Studio Bestie"
+data-type="bestie">
+Pilih Paket
+</label>
+</div>
+
+</div>
+
+<div class="package-card">
+
+<div class="package-header">
+<div class="package-name">SQUAD</div>
+<div class="package-price-container">
+<span class="package-price-old">Rp 75.000</span>
+<div class="package-price">Rp 60.000</div>
+</div>
+</div>
+
+<ul>
+<li>3 - 5 Orang</li>
+<li>Durasi 15 Menit</li>
+<li>Free Editing</li>
+<li>Semua File via Google Drive</li>
+<li>Free Kupon</li>
+</ul>
+
+<div class="package-select">
+<label>
+<input
+type="radio"
+name="paket"
+value="60000"
+data-paket="Studio Squad"
+data-type="squad">
+Pilih Paket
+</label>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Tambahan</h2>
+
+<div class="option-box">
+
+<h3>Tambahan Orang</h3>
+
+<select id="extraPeople">
+<option value="0">Tidak Ada</option>
+</select>
+
+<h3>Tambahan Waktu</h3>
+
+<select id="extraTime">
+
+<option value="0">0 Menit</option>
+
+<option value="10000">
++5 Menit (Rp 10.000)
+</option>
+
+<option value="20000">
++10 Menit (Rp 20.000)
+</option>
+
+<option value="30000">
++15 Menit (Rp 30.000)
+</option>
+
+<option value="40000">
++20 Menit (Rp 40.000)
+</option>
+
+<option value="50000">
++25 Menit (Rp 50.000)
+</option>
+
+<option value="60000">
++30 Menit (Rp 60.000)
+</option>
+
+</select>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Portfolio Studio</h2>
+
+<div class="gallery">
+
+<img src="./portfolio/1.jpg" alt="">
+<img src="./portfolio/2.jpg" alt="">
+<img src="./portfolio/3.jpg" alt="">
+<img src="./portfolio/4.jpg" alt="">
+<img src="./portfolio/5.jpg" alt="">
+<img src="./portfolio/6.jpg" alt="">
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Pertanyaan Umum</h2>
+
+<div class="faq-item">
+<h4>Apakah hasil foto diedit?</h4>
+<p>
+Ya, seluruh foto akan mendapatkan proses editing dasar
+agar hasil terlihat lebih maksimal.
+</p>
+</div>
+
+<div class="faq-item">
+<h4>Kapan file foto dikirim?</h4>
+<p>
+File akan dikirim melalui Google Drive paling lama
+1 jam setelah sesi foto.
+</p>
+</div>
+
+<div class="faq-item">
+<h4>Apakah sudah tersedia properti?</h4>
+<p>
+Tentu, kami menyediakan banyak properti yang bisa anda gunakan secara gratis
+</p>
+</div>
+
+<div class="faq-item">
+<h4>Apakah anak kecil boleh ikut foto?</h4>
+<p>
+Boleh banget dong. Studio kami cocok untuk foto keluarga,
+pasangan, sahabat maupun anak-anak.
+</p>
+</div>
+
+</section>
+
+<div class="spacer"></div>
+
+<div class="sticky-total">
+
+<div class="sticky-content">
+
+<div>
+
+<div class="total-label">
+TOTAL ESTIMASI
+</div>
+
+<div
+id="totalHarga"
+class="total-price">
+Rp 0
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="kirimWhatsApp()">
+Booking Sekarang
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function formatRupiah(number){
+return new Intl.NumberFormat('id-ID').format(number);
+}
+
+const extraPeople = document.getElementById("extraPeople");
+const extraTime = document.getElementById("extraTime");
+const totalHarga = document.getElementById("totalHarga");
+
+/* UPDATE OPSI TAMBAHAN ORANG */
+
+function updateExtraPeople(){
+
+const selected =
+document.querySelector('input[name="paket"]:checked');
+
+extraPeople.innerHTML = '';
+
+let defaultOption = document.createElement('option');
+defaultOption.value = 0;
+defaultOption.textContent = 'Tidak Ada';
+
+extraPeople.appendChild(defaultOption);
+
+if(!selected) return;
+
+/* BESTIE */
+
+if(selected.dataset.type === "bestie"){
+
+[
+[15000,'+1 Orang (Rp 15.000)'],
+[25000,'+2 Orang (Rp 25.000)']
+]
+.forEach(item=>{
+
+let option = document.createElement('option');
+
+option.value = item[0];
+option.textContent = item[1];
+
+extraPeople.appendChild(option);
+
+});
+
+}
+
+/* SQUAD */
+
+if(selected.dataset.type === "squad"){
+
+for(let i=1;i<=6;i++){
+
+let option = document.createElement('option');
+
+option.value = i * 10000;
+option.textContent =
+'+' + i + ' Orang (Rp ' +
+formatRupiah(i * 10000) +
+')';
+
+extraPeople.appendChild(option);
+
+}
+
+}
+
+}
+
+/* HITUNG TOTAL */
+
+function hitungTotal(){
+
+let total = 0;
+
+const selected =
+document.querySelector('input[name="paket"]:checked');
+
+if(selected){
+
+total += parseInt(selected.value);
+
+}
+
+total += parseInt(extraPeople.value || 0);
+total += parseInt(extraTime.value || 0);
+
+totalHarga.innerHTML =
+'Rp ' + formatRupiah(total);
+
+}
+
+/* EVENT */
+
+document
+.querySelectorAll('input[type="radio"]')
+.forEach(item=>{
+
+item.addEventListener('change',()=>{
+
+updateExtraPeople();
+hitungTotal();
+
+});
+
+});
+
+extraPeople.addEventListener(
+'change',
+hitungTotal
+);
+
+extraTime.addEventListener(
+'change',
+hitungTotal
+);
+
+/* WHATSAPP */
+
+function kirimWhatsApp(){
+
+const selected =
+document.querySelector('input[name="paket"]:checked');
+
+if(!selected){
+
+alert(
+'Silakan pilih paket terlebih dahulu.'
+);
+
+return;
+
+}
+
+const paket =
+selected.dataset.paket;
+
+const total =
+totalHarga.innerText;
+
+const orang =
+extraPeople.options[
+extraPeople.selectedIndex
+].text;
+
+const waktu =
+extraTime.options[
+extraTime.selectedIndex
+].text;
+
+let pesan =
+`Halo MasMotret 👋
+
+Saya ingin melakukan booking Self Photo Studio.
+
+📦 Paket:
+${paket}
+
+👥 Tambahan Orang:
+${orang}
+
+⏰ Tambahan Waktu:
+${waktu}
+
+💰 Total Estimasi:
+${total}
+
+Mohon informasi jadwal yang tersedia.
+
+Terima kasih 🙏`;
+
+window.open(
+'https://wa.me/6285724129496?text=' +
+encodeURIComponent(pesan),
+'_blank'
+);
+
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
